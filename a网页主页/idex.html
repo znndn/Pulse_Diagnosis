@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>脉搏诊断助手</title>
+    <!-- 视口设置，使页面在移动设备上响应良好 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Css/style.css">
+    <link rel="shortcut icon" href="../Picture/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="elevator" id="elevator">
+        <div class="elevator-item" data-scroll-to="section1">近期研究</div>
+        <div class="elevator-item" data-scroll-to="section2">脉搏历史</div>
+        <div class="elevator-item" data-scroll-to="section3">用户反馈</div>
+        <div class="elevator-item" id="back-to-top">回到顶部</div> <!-- 新增回到顶部按钮 -->
+    </div>
+
+    <!-- 各个部分 -->
+    <section id="section1"></section>
+    <section id="section2"></section>
+    <section id="section3"></section>
+    <!-- //导航区域 -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="../Picture/favicon.ico" alt="Logo">
+            </a>
+            <span>Pulse-Diagnosis</span>
+            <ul class="nav-links">
+                <li><a href="#" data-menu="home">我们的研究</a></li>
+            <li><a href="#" data-menu="features">功能介绍</a></li>
+            <li><a href="#" data-menu="contact">联系我们</a></li>
+            </ul>
+        </div>
+         <!-- 下拉菜单 -->
+    <div class="dropdown-menu">
+        <div class="dropdown-content" data-menu="home">
+            <!-- 首页的下拉内容 -->
+            <ul>
+                <li><a href="https://zhongyibaike.com/wiki/%E8%84%89%E8%AF%8A%E7%90%86%E8%AE%BA">中医理论基础</a></li>
+                <li><a href="https://xueshu.baidu.com/usercenter/paper/show?paperid=64b26f87631c7afc00df2d62ee68ce7e&site=baike">近代科学理论基础</a></li>
+                <li><a href="https://skl-dmt.nuc.edu.cn/info/1013/1291.htm">数据统计报告</a></li>
+                <li><a href="https://qikan.cqvip.com/Qikan/Article/Detail?id=37027610">正确性分析</a></li>
+                <li><a href="https://www.zhonghuadiancang.com/xuanxuewushu/maijing/">古中医脉搏典籍</a></li>
+                <li><a href="https://xhyxzz.pumch.cn/cn/article/pdf/preview/10.12290/xhyxzz.2022-0182.pdf">大数据统计规律</a></li>
+                <li><a href="https://pdf.hanspub.org/JSTA20230100000_24586878.pdf">调查数据</a></li>
+                <li><a href="https://xb.bucm.edu.cn/zh/article/13103639/">相关研究偏差</a></li>
+            </ul>
+        </div>
+        <div class="dropdown-content" data-menu="features">
+            <!-- 功能介绍的下拉内容 -->
+            <ul>
+                <li><a href="https://github.com/HqWu-HITCS/Awesome-Chinese-LLM?tab=readme-ov-file#11-%E6%96%87%E6%9C%ACllm%E6%A8%A1%E5%9E%8B">调用的模型</a></li>
+                <li><a href="#">如何使用</a></li>
+                
+            </ul>
+        </div>
+        <div class="dropdown-content" data-menu="contact">
+            <!-- 联系我们的下拉内容 -->
+            <ul>
+                <li><a href="#">联系方式 1</a></li>
+                <li><a href="#">联系方式 2</a></li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+    <div id="chat-icon">
+        <!-- 可以使用字体图标或图片，这里使用一个简单的图标占位 -->
+        <img src="../Picture/favicon.ico" alt="Chat Icon" style="border-radius: 50%;">
+    </div>
+    <div id="chat-dialog">
+        <div class="dialog-content">
+            <span class="close-btn">&times;</span>
+            <div class="dialog-body">
+                <!-- 对话框内容 -->
+                <div id="chat-window">
+                    <!-- 这里将显示问答内容 -->
+                </div>
+                <div class="input-area">
+                    <input type="text" id="user-input" placeholder="请输入您的脉搏数据...">
+                    <button id="send-btn">发送</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+<div class="main-content">
+
+        <!-- 轮播图容器 -->
+         <!-- <div class="carousel">
+    <div class="carousel-slides">
+          <div class="slide">  
+            <p>脉搏反映了人体气血的运行状况、脏腑功能以及疾病的性质和部位。通过脉诊，医生可以辨别寒热虚实、判断病位深浅，为临床诊断提供重要依据。</p> -->
+           
+        <!-- </div>
+        <div class="slide">
+           <p>利用现代传感器技术、信号处理和人工智能，提升脉诊的准确性和可重复性。</p>
+        </div>
+        <div class="slide">
+           <p>为了提高脉诊的临床应用价值，建立了脉象标准化数据库和评价体系，促进了脉诊的科学化发展。</p>
+        </div>  -->
+        <!-- 可以添加更多幻灯片 -->
+     <!-- </div> 
+     <button class="carousel-btn prev-btn">&#10094;</button>
+    <button class="carousel-btn next-btn">&#10095;</button>
+
+    <div class="carousel-indicators">
+        <span class="indicator active" data-slide-to="0"></span>
+        <span class="indicator" data-slide-to="1"></span>
+        <span class="indicator" data-slide-to="2"></span>
+    </div>
+        </div>   -->
+        <!-- <div class="carousel">
+            <div class="carousel-slides">
+                <div class="slide">
+                    <div class="video-description">
+                        <p>脉搏诊断的发展及应用概述</p>
+                    </div>
+                    <video controls width="100%">
+                        <source src="../videos/pulse_diagnosis1.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放，请升级浏览器或更换其他设备。
+                    </video>
+                </div> -->
+                <!-- <div class="slide">
+                    <div class="video-description">
+                        <p>现代传感器技术如何提高脉诊精度</p>
+                    </div>
+                    <video controls width="100%">
+                        <source src="../videos/pulse_diagnosis2.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放，请升级浏览器或更换其他设备。
+                    </video> -->
+                <!-- </div>
+                <div class="slide">
+                    <video controls width="100%">
+                        <source src="../videos/pulse_diagnosis3.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放，请升级浏览器或更换其他设备。
+                    </video>
+                </div> -->
+                <!-- 可以继续添加更多的幻灯片视频 -->
+            <!-- </div>
+            <button class="carousel-btn prev-btn">&#10094;</button>
+            <button class="carousel-btn next-btn">&#10095;</button>
+        
+            <div class="carousel-indicators">
+                <span class="indicator active" data-slide-to="0"></span>
+                <span class="indicator" data-slide-to="1"></span>
+                <span class="indicator" data-slide-to="2"></span>
+            </div>
+        </div> -->
+        
+        <!-- <div class="carousel">
+            <div class="carousel-slides">
+                 第一个幻灯片 -->
+                <!-- <div class="slide">
+                    <div class="slide-description">
+                        <p>脉搏诊断的发展及应用概述</p>
+                    </div>
+                    <div class="video-container">
+                        <video controls width="100%">
+                            <source src="https://www.example.com/videos/pulse_diagnosis1.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放，请升级浏览器或更换其他设备。
+                        </video>
+                    </div>
+                </div> -->
+                
+                <!-- 第二个幻灯片 -->
+                <!-- <div class="slide">
+                    <div class="slide-description">
+                        <p>现代传感器技术如何提高脉诊精度</p>
+                    </div>
+                    <div class="video-container">
+                        <video controls width="100%">
+                            <source src="https://www.example.com/videos/pulse_diagnosis2.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放，请升级浏览器或更换其他设备。
+                        </video>
+                    </div>
+                </div> --> 
+                <!-- 可以继续添加更多的幻灯片视频 -->
+            <!-- </div>
+            <button class="carousel-btn prev-btn">&#10094;</button>
+            <button class="carousel-btn next-btn">&#10095;</button>
+        
+            <div class="carousel-indicators">
+                <span class="indicator active" data-slide-to="0"></span>
+                <span class="indicator" data-slide-to="1"></span>
+            </div>
+        </div> -->
+        <div class="carousel">
+            <div class="carousel-slides">
+                <!-- 第一个幻灯片 -->
+                <div class="slide">
+                    <div class="slide-description">
+                        <p>脉搏诊断的内在逻辑以及可行性</p>
+                    </div>
+                    <video controls width="100%">
+                        <source src="../videos/pulse_diagnosis1.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放，请升级浏览器或更换其他设备。
+                    </video>
+                </div>
+                
+                <!-- 第二个幻灯片 -->
+                <div class="slide">
+                    <div class="slide-description">
+                        <p>现代传感器技术如何提高脉诊精度</p>
+                    </div>
+                    <video controls width="100%">
+                        <source src="../videos/pulse_diagnosis2.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放，请升级浏览器或更换其他设备。
+                    </video>
+                </div>
+                <!-- 第三个幻灯片 -->
+                <div class="slide">
+                    <div class="slide-description">
+                        <p>AI技术对未来医疗的巨大潜力</p>
+                    </div>
+                    <video controls width="100%">
+                        <source src="../videos/pulse_diagnosis3.mp4" type="video/mp4">
+                        您的浏览器不支持视频播放，请升级浏览器或更换其他设备。
+                    </video>
+                </div>
+                <!-- 可以继续添加更多的幻灯片视频 -->
+            </div>
+            <button class="carousel-btn prev-btn">&#10094;</button>
+            <button class="carousel-btn next-btn">&#10095;</button>
+        
+            <div class="carousel-indicators">
+                <span class="indicator" data-slide-to="0"></span>
+                <span class="indicator active" data-slide-to="1"></span>
+                <span class="indicator" data-slide-to="2"></span>
+            </div>
+        </div>
+        
+
+
+        <div class="bigcard-slider">
+            <div class="slider-header">
+                <h2 class="card-slider-h2">近期研究</h2>
+                <div class="slider-controls">
+                    <button class="card-prev-btn">&#8249;</button>
+                    <button class="card-next-btn">&#8250;</button>
+                </div>
+            </div>
+             <!-- 添加 card-slider 容器  -->
+            <div class="card-slider card1">
+                <!-- 卡片 1 -->
+                <div class="card">
+                    <a href="https://www.mdpi.com/1424-8220/20/16/4618 " >
+                        <div class="card-content">
+                            <h2>传感器技术和信号处理</h2>
+                            <p>现代脉诊技术融合了先进的传感器和信号处理方法，使脉搏数据的采集和分析更加客观、准确。智能化设备的应用，显著提升了脉搏波形分析的精度和可靠性。</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- 卡片 2 -->
+                <div class="card">
+                    <a href="https://med.wanfangdata.com.cn/Paper/Detail?dbid=WF_QK&id=PeriodicalPaper_zgzyyxxzz202407031">
+                        <div class="card-content">
+                            <h2>人工智能与大数据</h2>
+                            <p>现代医学技术的发展，使得脉诊这一传统中医诊断方法得到了数字化和智能化的提升。通过结合先进的传感器技术、信号处理方法以及人工智能算法显著提高准确性。</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- 卡片 3 -->
+                <div class="card">
+                    <a href="https://std.samr.gov.cn/gb/search/gbDetailed?id=F963D7F2F5266B70E05397BE0A0AC729">
+                        <div class="card-content">
+                            <h2>脉象标准化数据库</h2>
+                            <p>建立标准化数据库，确保脉诊数据的可靠性和一致性，为脉诊的科学化研究提供数据支撑。这些数据库还为跨机构研究和诊断一致性提供了基础。</p>
+                        </div>
+                    </a>
+                </div>
+                    <!-- 卡片 3 -->
+                <div class="card">
+                    <a href="https://d.wanfangdata.com.cn/periodical/ChlQZXJpb2RpY2FsQ0hJTmV3UzIwMjQwNzA0Eg9kemNsanMyMDE3MDcwNDEaCHkzOGozc2Zh">
+                        <div class="card-content">
+                            <h2>便捷式收集脉搏波</h2>
+                            <p>采用科学的手法采集并分析脉搏波,光电容积脉搏波描述法因其无创、便宜、方便等优点,在评估血液动力学参数方面应用较多.尤其是用于血氧饱和度、血压以及心输出量的测量.本系统在光电容积描述法采集脉搏波信号后利用专业算法,提取心血管动力学参数的同时结合传统医学分析人体12经络健康状况,最后将历史数据保存并通过TCP远程共享.</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- 卡片 3 -->
+                <div class="card ">
+                    <a href="https://www.zhangqiaokeyan.com/academic-journal-cn_chinese-journal-medical-physics_thesis/0201290332720.html">
+                        <div class="card-content">
+                            <h2>基于脉搏波传导时间的血压测量方法</h2>
+                            <p>该研究设计了一种连续血压测量方法，利用脉搏波传导时间（PTT）来实时监测血压。方法涉及对耳后动脉和趾背动脉的脉搏波进行特征识别，并计算传播时间，然后根据受试者的生理参数计算脉搏波传导速度，进而得到血压值。</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="card ">
+                    <a href="https://www.zhangqiaokeyan.com/academic-journal-cn_chinese-journal-diabetes_thesis/0201279867805.html">
+                        <div class="card-content">
+                            <h2>基门诊治疗的糖尿病患者左腕脉搏波传导时间参考值的研究</h2>
+                            <p>该研究旨在确定门诊治疗的糖尿病患者左腕脉搏波传导时间（PWTT）的参考值范围。通过对比糖尿病患者和非糖尿病患者的PWTT，发现糖尿病患者PWTT在不同年龄段存在差异，并给出了相应的参考值范围。</p>
+                        </div>
+                    </a>
+                </div>
+               
+                <!-- 更多卡片 -->
+                <!-- 确保所有卡片都在 card-slider 容器内 -->
+            </div>
+        </div>
+        <div class="bigcard-slider">
+            <div class="slider-header">
+                <h2 class="card-slider-h2">脉搏历史及其作用</h2>
+                <div class="slider-controls">
+                    <button class="card-prev-btn">&#8249;</button>
+                    <button class="card-next-btn">&#8250;</button>
+                </div>
+            </div>
+            <!-- 添加 card-slider 容器 -->
+            <div class="card-slider card2">
+                <!-- 卡片 1 -->
+                <div class="card ">
+                    <a href="https://neijing.5000yan.com/suwen/myjwl/">
+                        <div class="card-content">
+                            <h2>脉诊起源与发展</h2>
+                            <p>脉诊在《黄帝内经》中已有记载，历代医家不断发展与完善。唐代的孙思邈和明代的李时珍等名医，为脉诊奠定了重要理论基础，并丰富了脉象的分类。</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- 卡片 2 -->
+                <div class="card">
+                    <a href="https://zh.wikipedia.org/wiki/%E5%82%B7%E5%AF%92%E9%9B%9C%E7%97%85%E8%AB%96">
+                        <div class="card-content">
+                            <h2>经典著作与影响</h2>
+                            <p>《脉经》、《伤寒杂病论》等经典医书，详细阐述了脉象与疾病的关系，并提出了多种脉象标准。这些著作不仅在中国医界流传，还影响了朝鲜、日本等国家的医学发展。</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- 卡片 3 -->
+                <div class="card">
+                    <a href="https://history.fudan.edu.cn/info/4001/15121.htm">
+                        <div class="card-content">
+                            <h2>脉诊的国际传播</h2>
+                            <p>随着古代中国与东亚、东南亚国家的交流，脉诊技术逐渐传播到周边地区，成为这些国家传统医学的一部分。例如，日本汉方医学和韩国韩医都继承并发展了脉诊方法。20世纪以来，随着全球对传统医学的重视，脉诊更是受到了欧美学者的关注，相关研究逐步增多。
+                            </p>
+                        </div>
+                    </a>
+                </div>
+                    <!-- 卡片 3 -->
+                <div class="card">
+                    <a href="http://www.knowcat.cn/yixue/zyy/20240530/1184292.html">
+                        <div class="card-content">
+                            <h2>李东垣脉诊理论探析</h2>
+                            <p>该文对金元时期著名医家李东垣的脉诊理论进行了探析。李东垣所著《脉诀指掌病式图说》等书较为全面地论述了26种脉象以及多种脉法，并提出了凭脉用药的观点。该文对中医脉学的发展有深刻影响和重大贡献。</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- 卡片 3 -->
+                <div class="card">
+                    <a href="https://zhuanlan.zhihu.com/p/597515409">
+                        <div class="card-content">
+                            <h2>《脉经》——中医把脉理论的重要出处</h2>
+                            <p>《脉经》序言中提到，诊脉需要很强的技巧，“在心易了，指下难明”，也就是将学会、背会的脉学知识灵活准确地应用到实践中需要一个艰难的过程。这句话也成了千百代医家教授和学习脉学时的“警世”之言，对于从医者来说，几乎没有不知道的。</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- 卡片 3 -->
+               
+                <!-- 更多卡片 -->
+                <!-- 确保所有卡片都在 card-slider 容器内 -->
+            </div>
+        </div>
+        <div class="bigcard-slider">
+            <div class="slider-header">
+                <h2 class="card-slider-h2">我们的用户反馈</h2>
+                <div class="slider-controls">
+                    <button class="card-prev-btn">&#8249;</button>
+                    <button class="card-next-btn">&#8250;</button>
+                </div>
+            </div>
+            <!-- 添加 card-slider 容器 -->
+            <div class="card-slider card3">
+                <!-- 卡片 1 -->
+                <div class="card">
+                    <a href="#">
+                        <div class="card-content">
+                            <h2>准确性与便捷性</h2>
+                            <p>许多用户认为，项目通过传感器和AI分析的结合，使脉搏诊断更加精确，诊断结果符合实际情况。他们指出，相比传统脉诊，项目在时间和操作便捷性上有明显优势，尤其适合现代快节奏生活的用户。</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- 卡片 2 -->
+                <div class="card">
+                    <a href="#">
+                        <div class="card-content">
+                            <h2>个性化诊断</h2>
+                            <p>用户反馈中提到，项目的个性化分析对健康管理具有较大帮助。一些用户发现，通过AI定期监测脉搏数据，能够更好地追踪个人健康状态变化。然而，他们也希望系统能进一步根据个人身体特征和健康历史调整诊断建议，提升个性化水平。</p>
+                        </div>
+                    </a>
+                </div>
+                <!-- 卡片 3 -->
+                <div class="card">
+                    <a href="#">
+                        <div class="card-content">
+                            <h2>改善建议</h2>
+                            <p>部分用户反馈，虽然诊断结果较为准确，但对脉象细节的解释尚需优化，尤其是在提供更通俗易懂的健康建议上。他们希望诊断报告不仅有医学数据，还能结合生活方式的调整建议，以便更好地理解和应用诊断结果。</p>
+                        </div>
+                    </a>
+                </div>
+                    <!-- 卡片 3 -->
+                <div class="card">
+                    <a href="#">
+                        <div class="card-content">
+                            <h2>合作意向</h2>
+                            <p></p>
+                        </div>
+                    </a>
+                </div>
+              
+                
+                <!-- 更多卡片 -->
+                <!-- 确保所有卡片都在 card-slider 容器内 -->
+            </div>
+        </div>
+
+        <div class="bottom-content">
+            <p style="font-size: 30px ; font-family: 宋体; font-weight: 600;">现在就开始您的专属ai脉搏诊断吧</p>
+        <div id="api-button-container" class="dialog-button" >
+            
+            <button id="open-dialog-btn" >打开Pulse诊断助手</button>
+        </div>
+    </div>
+</div> 
+    <script src="../JavaScript/script.js" defer></script>
+</body>
+</html>
